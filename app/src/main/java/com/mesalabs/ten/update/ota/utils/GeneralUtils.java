@@ -41,7 +41,7 @@ public class GeneralUtils {
     public static boolean isNotificationAlarmSet(Context context) {
         Intent intent = new Intent(context, AppReceiver.class);
         intent.setAction(Constants.INTENT_START_UPDATE_CHECK);
-        return PendingIntent.getBroadcast(context, 1673, intent, PendingIntent.FLAG_NO_CREATE) != null;
+        return PendingIntent.getBroadcast(context, 1673, intent, PendingIntent.FLAG_NO_CREATE | PendingIntent.FLAG_IMMUTABLE) != null;
     }
 
     public static void setBackgroundCheck(Context context, boolean set) {
@@ -53,7 +53,7 @@ public class GeneralUtils {
         Intent intent = new Intent(context, AppReceiver.class);
         intent.setAction(Constants.INTENT_START_UPDATE_CHECK);
         int intentId = 1673;
-        int intentFlag = PendingIntent.FLAG_UPDATE_CURRENT;
+        int intentFlag = PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE;
 
         if (schedule) {
             int requestedInterval = PreferencesUtils.getBgServiceCheckFrequency();
@@ -88,7 +88,12 @@ public class GeneralUtils {
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, PreferencesUtils.getMainNotiChannelName());
         Intent resultIntent = new Intent(context, MainActivity.class);
         resultIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(
+                context,
+                0,
+                resultIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE // ✅
+        );
 
         mBuilder.setContentTitle(context.getString(md5pass ? R.string.mesa_noti_download_complete : R.string.mesa_noti_download_failed))
                 .setContentText(context.getString(md5pass ? R.string.mesa_noti_download_complete_desc : R.string.mesa_noti_download_failed_md5_desc))
@@ -119,7 +124,10 @@ public class GeneralUtils {
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
 
         mBuilder.setContentTitle(context.getString(R.string.mesa_noti_new_update))
                 .setContentText(context.getString(R.string.mesa_noti_new_update_desc))
@@ -150,7 +158,10 @@ public class GeneralUtils {
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
-        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent resultPendingIntent = stackBuilder.getPendingIntent(
+                0,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
 
         mBuilder.setContentTitle(context.getString(installed ? R.string.mesa_noti_update_installed : R.string.mesa_noti_update_install_fail))
                 .setContentText(installed ? context.getString(R.string.mesa_noti_update_installed_desc, PreferencesUtils.ROM.getVersionName()) : context.getString(R.string.mesa_noti_update_install_fail_desc))

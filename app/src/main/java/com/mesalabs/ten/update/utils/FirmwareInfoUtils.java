@@ -27,15 +27,6 @@ import com.mesalabs.cerberus.utils.PropUtils;
 public class FirmwareInfoUtils {
     private static String TAG = "FirmwareInfoUtils";
 
-    public static String getEnsoVersion() {
-        int prop = PropUtils.getInt("ro.on.enso.version", 0);
-
-        if (prop != 0) {
-            return prop / 10000 + "." + (prop % 10000) / 100 + "." + (prop % 1000) / 100;
-        } else
-            return null;
-    }
-
     public static String getKernelVersion() {
         StructUtsname uname = Os.uname();
 
@@ -74,7 +65,7 @@ public class FirmwareInfoUtils {
     }
 
     public static String getROMVersion() {
-        int prop = PropUtils.getInt("ro.on.core.version", 0);
+        int prop = PropUtils.getInt("ro.ssm.verild", 0);
 
         if (prop != 0) {
             return prop / 10000 + "." + (prop % 10000) / 100 + "." + (prop % 1000) / 100;
