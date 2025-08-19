@@ -97,7 +97,7 @@ public abstract class FetchOTANotificationManager extends DefaultFetchNotificati
     public void updateNotification(@NotNull NotificationCompat.Builder notificationBuilder, @NotNull DownloadNotification downloadNotification, @NotNull Context context) {
         Intent resultIntent = new Intent(context, MainActivity.class);
         resultIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-        PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT);
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(context, 0, resultIntent, PendingIntent.FLAG_CANCEL_CURRENT | PendingIntent.FLAG_IMMUTABLE);
 
         notificationBuilder.setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setSmallIcon(getSmallIcon(downloadNotification))
