@@ -13,7 +13,7 @@ android {
         minSdk 31
         targetSdk 33
         versionCode generateVersionCode()
-        versionName generateVersionName()
+        versionName 'ShitStockMod'
     }
     buildTypes {
         release {
@@ -30,6 +30,7 @@ android {
         targetCompatibility = 1.8
     }
     ndkVersion ndkVersion
+    buildToolsVersion '30.0.3'
 }
 
 private Integer generateVersionCode() {
