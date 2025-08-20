@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 ext.versionMajor = 1
 ext.versionMinor = 3
-ext.versionPatch = 0
+ext.versionPatch = 2
 ext.versionClassifier = null
 
 android {
@@ -82,4 +82,9 @@ dependencies {
     annotationProcessor "androidx.room:room-compiler:2.5.2"
 
     testImplementation 'junit:junit:4.12'
+}
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
 }

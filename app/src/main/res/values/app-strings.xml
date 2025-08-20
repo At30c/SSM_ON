@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="mesa_tenupdate">십 Update</string>
+    <string name="mesa_tenupdate">십 Update | SSM</string>
 
     <string name="mesa_tenupdate_notichannel_main_name">General</string>
     <string name="mesa_tenupdate_notichannel_bg_name">Background</string>
@@ -69,7 +69,6 @@
 
     <string name="mesa_fwinfo_default_summary">Unknown</string>
     <string name="mesa_fwinfo_on_rom_version_title">ROM version</string>
-    <string name="mesa_fwinfo_on_enso_version_title">ensō version</string>
     <string name="mesa_fwinfo_oneui_version_title">One UI version</string>
     <string name="mesa_fwinfo_android_version_title">Android version</string>
     <string name="mesa_fwinfo_kernel_version_title">Kernel version</string>
@@ -85,7 +84,7 @@
     <string name="mesa_updates_check_error">There was an error during update checking.</string>
 
     <string name="mesa_whats_new">What\'s new</string>
-    <string name="mesa_whats_new_supertext_separator">•</string>
+    <string name="mesa_whats_new_supertext_separator" translatable="false">•</string>
     <string name="mesa_whats_new_supertext_rom_version">Version</string>
     <string name="mesa_whats_new_supertext_rom_build">Build</string>
     <string name="mesa_whats_new_supertext_file_size">Size</string>

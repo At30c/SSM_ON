@@ -39,8 +39,7 @@ import com.mesalabs.ten.update.utils.LogUtils;
 public class AppUpdateUtils {
     private static final String TAG = "AppUpdateUtils";
     private static final String DOWNLOAD_DIR = "updates";
-    private static final String PROP_ROM_BUILD = "ro.ssm.otaup.ver";
-    private static final String UPDATE_XML = "https://gitlab.com/At30c/SSM-UF/raw/main/" + PropUtils.get(PROP_ROM_BUILD, "0") + "/apps-manifest.xml";
+    private static final String UPDATE_XML = "https://gitlab.com/At30c/SSM-UF/raw/main/beyond2ltexx/Android33/apps_manifest.xml";
 
     public static final int STATE_NO_UPDATES = 1;
     public static final int STATE_NEW_VERSION_AVAILABLE = 2;

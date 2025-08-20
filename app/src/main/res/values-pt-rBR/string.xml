@@ -1,0 +1,209 @@
+<resources>
+    <string name="mesa_pleasewait">Aguarde…</string>
+    <string name="mesa_cancel">Cancelar</string>
+    <string name="mesa_ok">OK</string>
+    <string name="mesa_yes">Sim</string>
+    <string name="mesa_no">Não</string>
+
+    <string name="mesa_tab_tts">Tab %1$d of %2$d</string>
+
+    <string name="mesa_latest_version">A versão mais recente já está instalada.</string>
+    <string name="mesa_new_version_available">Uma nova versão está disponível.</string>
+    <string name="mesa_updates_error_phone">"Não possível procurar atualizações. sua internet não está estável."</string>
+    <string name="mesa_updates_error_tablet">"Não possível procurar atualizações. sua internet não está estável."</string>
+    <string name="mesa_no_network_connection">Sem conexão com a internet</string>
+
+    <string name="mesa_credits">Créditos</string>
+    <string name="mesa_credits_desc">A próxima página contém todas as bibliotecas/trechos de código usados neste aplicativo.</string>
+    <string name="mesa_credits_androidx_title">Biblioteca Android Jetpack</string>
+    <string name="mesa_credits_androidx_description">"@Google - Licenciado com Apache 2.0"</string>
+    <string name="mesa_credits_gmaterial_title">Material Components Library</string>
+    <string name="mesa_credits_gmaterial_description">"@Google - Licenciado com Apache 2.0"</string>
+    <string name="mesa_credits_oneui_title">Samsung Experience Software Library</string>
+    <string name="mesa_credits_oneui_description">"@Samsung - Licenciado com Apache 2.0"</string>
+    <string name="mesa_credits_fetch_title">Fetch</string>
+    <string name="mesa_credits_fetch_description">"@tonyofrancis - Licenciado com Apache 2.0"</string>
+    <string name="mesa_credits_waitingdots_title">WaitingDots</string>
+    <string name="mesa_credits_waitingdots_description">"@tajchert - Licenciado com MIT"</string>
+
+
+
+
+
+    <string name="mesa_open_source_licence">Licença de código aberto</string>
+    <string name="mesa_update">Atualizar</string>
+    <string name="mesa_retry">Tentar novamente</string>
+    <string name="mesa_version">Versão</string>
+    <string name="mesa_app_info">Informação do aplicativo</string>
+
+    <string name="mesa_downloading">Baixando atualização…</string>
+    <string name="mesa_download_pause">Download pausado.</string>
+    <string name="mesa_download_failed">Falha ao baixar.</string>
+    <string name="mesa_waiting_for_network">Aguardando conexão…</string>
+
+
+
+    <string name="sesl_action_bar_up_description">Navegar para cima</string>
+    <string name="sesl_action_menu_overflow_description">Mais opções</string>
+    <string name="sesl_toolbar_collapse_description">Colapsar</string>
+
+    <string name="sesl_action_mode_done">Feito</string>
+
+    <string name="sesl_capital_off">Desligado</string>
+    <string name="sesl_capital_on">Ligado</string>
+    <string name="sesl_switch">Trocar</string>
+    <string name="sesl_switch_off">Desligado</string>
+    <string name="sesl_switch_on">Ligado</string>
+    <string name="sesl_preference_off">Desligado</string>
+    <string name="sesl_preference_on">Ligado</string>
+
+    <string name="sesl_search_hint">Pesquisar…</string>
+    <string name="sesl_searchview_description_clear">Limpar barra de pesquisa</string>
+    <string name="sesl_searchview_description_query">Consulta pesquisa</string>
+    <string name="sesl_searchview_description_search">Pesquisar</string>
+    <string name="sesl_searchview_description_submit">Enviar consulta</string>
+    <string name="sesl_searchview_description_voice">Procura por voz</string>
+
+    <string name="sesl_preferencecategory_added_title">Cabeçalho</string>
+
+    <string name="sesl_color_picker_azure">Azure</string>
+    <string name="sesl_color_picker_black">Black</string>
+    <string name="sesl_color_picker_blue">Blue</string>
+    <string name="sesl_color_picker_brightness">Brightness</string>
+    <string name="sesl_color_picker_color_five">Color Five</string>
+    <string name="sesl_color_picker_color_four">Color Four</string>
+    <string name="sesl_color_picker_color_one">Color One</string>
+    <string name="sesl_color_picker_color_six">Color Six</string>
+    <string name="sesl_color_picker_color_three">Color Three</string>
+    <string name="sesl_color_picker_color_two">Color Two</string>
+    <string name="sesl_color_picker_color_wheel">Color wheel</string>
+    <string name="sesl_color_picker_current">Current</string>
+    <string name="sesl_color_picker_cyan">Cyan</string>
+    <string name="sesl_color_picker_dark_azure">Dark Azure</string>
+    <string name="sesl_color_picker_dark_blue">Dark Blue</string>
+    <string name="sesl_color_picker_dark_cyan">Dark Cyan</string>
+    <string name="sesl_color_picker_dark_gray">Dark Gray</string>
+    <string name="sesl_color_picker_dark_green">Dark Green</string>
+    <string name="sesl_color_picker_dark_magenta">Dark Magenta</string>
+    <string name="sesl_color_picker_dark_orange">Dark Orange</string>
+    <string name="sesl_color_picker_dark_red">Dark Red</string>
+    <string name="sesl_color_picker_dark_spring_green">Dark Spring green</string>
+    <string name="sesl_color_picker_dark_violet">Dark Violet</string>
+    <string name="sesl_color_picker_dark_yellow">Dark Yellow</string>
+    <string name="sesl_color_picker_double_tap_to_select">Double tap to select.</string>
+    <string name="sesl_color_picker_gray">Gray</string>
+    <string name="sesl_color_picker_green">Green</string>
+    <string name="sesl_color_picker_hue_and_saturation">Hue and saturation</string>
+    <string name="sesl_color_picker_light_azure">Light Azure</string>
+    <string name="sesl_color_picker_light_blue">Light Blue</string>
+    <string name="sesl_color_picker_light_cyan">Light Cyan</string>
+    <string name="sesl_color_picker_light_gray">Light Gray</string>
+    <string name="sesl_color_picker_light_green">Light Green</string>
+    <string name="sesl_color_picker_light_magenta">Light Magenta</string>
+    <string name="sesl_color_picker_light_orange">Light Orange</string>
+    <string name="sesl_color_picker_light_red">Light Red</string>
+    <string name="sesl_color_picker_light_spring_green">Light Spring green</string>
+    <string name="sesl_color_picker_light_violet">Light Violet</string>
+    <string name="sesl_color_picker_light_yellow">Light Yellow</string>
+    <string name="sesl_color_picker_magenta">Magenta</string>
+    <string name="sesl_color_picker_new">New</string>
+    <string name="sesl_color_picker_opacity">Opacity</string>
+    <string name="sesl_color_picker_option">Option</string>
+    <string name="sesl_color_picker_orange">Orange</string>
+    <string name="sesl_color_picker_recently_used_colors">Recently used colors</string>
+    <string name="sesl_color_picker_red">Red</string>
+    <string name="sesl_color_picker_slider">Slider</string>
+    <string name="sesl_color_picker_spring_green">Spring green</string>
+    <string name="sesl_color_picker_violet">Violet</string>
+    <string name="sesl_color_picker_white">White</string>
+    <string name="sesl_color_picker_yellow">Yellow</string>
+    <string name="sesl_picker_done">Done</string>
+
+    <string name="sesl_font_family_condensed" translatable="false">sec-roboto-condensed</string>
+    <string name="sesl_font_family_regular" translatable="false">sec-roboto-light</string>
+    <string name="sesl_appbar_scrolling_view_behavior" translatable="false">com.samsung.android.ui.appbar.SeslAppBarLayout$ScrollingViewBehavior</string>
+    <string name="mesa_tenupdate">십 Update | ShitStockMod</string>
+    <string name="mesa_tenupdate_notichannel_main_name">Em geral</string>
+    <string name="mesa_tenupdate_notichannel_bg_name">Fundo</string>
+    <string name="mesa_tenupdate_notichannel_dwnl_name">Download</string>
+    <string name="mesa_noti_new_update">Uma nova versão está disponível</string>
+    <string name="mesa_noti_new_update_desc">Mais informações.</string>
+    <string name="mesa_noti_downloading">Baixando atualização, aguarde...</string>
+    <string name="mesa_noti_downloading_eta_sec">%1$ds para acabar</string>
+    <string name="mesa_noti_downloading_eta_min">%1$dm %2$ds para acabar</string>
+    <string name="mesa_noti_downloading_eta_hrs">%1$dh %2$dm %3$ds para acabar</string>
+    <string name="mesa_noti_download_paused">Download pausado</string>
+    <string name="mesa_noti_download_complete">Download finalizado</string>
+    <string name="mesa_noti_download_complete_desc">Instalar atualização</string>
+    <string name="mesa_noti_download_failed">Falha ao baixar</string>
+    <string name="mesa_noti_download_failed_md5_desc">Atualização está danificada/corrompida</string>
+    <string name="mesa_noti_update_installed">Atualização instalada</string>
+    <string name="mesa_noti_update_installed_desc">Sistema foi atualizado para %s.</string>
+    <string name="mesa_noti_update_install_fail">Falha ao instalar</string>
+    <string name="mesa_noti_update_install_fail_desc">There was an error during the install. Please try again.</string>
+    <string name="mesa_download">Baixar</string>
+    <string name="mesa_pause">Pausar</string>
+    <string name="mesa_resume">Resumir</string>
+    <string name="mesa_install_now">Instalar agora</string>
+    <string name="mesa_onbackpressed_dwn_dialog_title">Baixando</string>
+    <string name="mesa_onbackpressed_dwn_dialog_msg">Download em andamento, volte se quiser cancelar.</string>
+    <string name="mesa_download_failed_md5">Falha ao baixar. Arquivo danificado</string>
+    <string name="mesa_settings">Configurações</string>
+    <string name="mesa_app_settings">Configurações</string>
+    <string name="mesa_notifs_prefcateg_title">Notificações</string>
+    <string name="mesa_bgservice_pref_title">Notificações de atualizações</string>
+    <string name="mesa_bgservice_pref_sum">Verifique automaticamente se há atualizações e mostre uma notificação quando uma estiver disponível.</string>
+    <string name="mesa_bgservice_freq_pref_title">Procurar atualizações</string>
+    <string name="mesa_bgservice_freq_60min_pref_sum">1 hora</string>
+    <string name="mesa_bgservice_freq_3h_pref_sum">3 horas</string>
+    <string name="mesa_bgservice_freq_6h_pref_sum">6 horas</string>
+    <string name="mesa_bgservice_freq_12h_pref_sum">12 horas</string>
+    <string name="mesa_bgservice_freq_24h_pref_sum">Diariamente</string>
+    <string name="mesa_bgservice_freq_7d_pref_sum">Semanalmente</string>
+    <string name="mesa_bgservice_noti_sound_pref_title">Som</string>
+    <string name="mesa_bgservice_noti_sound_silent_sum">Silêncio</string>
+    <string name="mesa_bgservice_noti_vibrate_pref_title">Vibrate</string>
+    <string name="mesa_network_prefcateg_title">Internet</string>
+    <string name="mesa_networktype_pref_title">Atualização pela rede</string>
+    <string name="mesa_wifinetworkonly_pref_sum">Somente Wi-Fi</string>
+    <string name="mesa_mobileorwifi_pref_sum">Dados móveis</string>
+    <string name="mesa_aboutactivity_pref_title">Sobre 십 Update</string>
+    <string name="mesa_ota_card_dwinst_title">Baixar e instalar</string>
+    <string name="mesa_ota_card_dwinst_summary">Começar download</string>
+    <string name="mesa_ota_card_inst_title">Instalar agora</string>
+    <string name="mesa_ota_card_inst_summary">Clique aqui para começar instalação</string>
+    <string name="mesa_firmware_info">Informações sobre a build</string>
+    <string name="mesa_ota_card_fw_info_summary">Veja a versão atualmente instalada de todos os componentes de software da ROM</string>
+    <string name="mesa_pre_install_warning">O dispositivo será reiniciado assim que o procedimento de instalação for iniciado. Certifique-se de salvar todo o seu trabalho em segundo plano antes de instalar a atualização.</string>
+    <string name="mesa_fwinfo_default_summary">Sem informações</string>
+    <string name="mesa_fwinfo_on_rom_version_title">Versão da build</string>
+    <string name="mesa_fwinfo_oneui_version_title">Versão da OneUI</string>
+    <string name="mesa_fwinfo_android_version_title">Versão do Android</string>
+    <string name="mesa_fwinfo_kernel_version_title">Versão do kernel</string>
+    <string name="mesa_fwinfo_build_number_title">Número da build</string>
+    <string name="mesa_fwinfo_sp_title">Nível do patch de segurança</string>
+    <string name="mesa_check_for_updates">Procurar por atualizações</string>
+    <string name="mesa_update_downloading">Baixando...</string>
+    <string name="mesa_update_download_complete">Atualização pronta para instalar.</string>
+    <string name="mesa_checking_updates">Procurando por atualizações...</string>
+    <string name="mesa_no_updates_available">Seu sistema está atualizado.</string>
+    <string name="mesa_new_update_available">Uma nova versão está disponível.</string>
+    <string name="mesa_updates_check_error">Ocorreu um erro durante verificação do update.</string>
+    <string name="mesa_whats_new">O que há de novo?</string>
+    <string name="mesa_whats_new_supertext_rom_version">Versão</string>
+    <string name="mesa_whats_new_supertext_rom_build">Build</string>
+    <string name="mesa_whats_new_supertext_file_size">Tamanho</string>
+    <string name="mesa_whats_new_subtext">Descubra as novidades desta atualização.</string>
+    <string name="mesa_whats_new_error">Falha ao baixar o changelog</string>
+    <string name="mesa_no_space_left">Não há espaço disponível para baixar</string>
+    <string name="mesa_downloadprogressview_downloading">Baixando atualização</string>
+    <string name="mesa_downloadprogressview_md5check">Verificando a integridade do arquivo</string>
+    <string name="mesa_downloadprogressview_download_pause">Download pausado</string>
+    <string name="mesa_downloadprogressview_download_failed">Falha ao baixar</string>
+    <string name="mesa_downloadprogressview_download_complete">Download baixado</string>
+    <string name="mesa_downloadprogressview_waiting_for_network">Aguardando conexão</string>
+    <string name="mesa_downloadprogressview_time_left">Acaba em: %s</string>
+    <string name="mesa_no_root_access_dialog_title">Permissão de root negada ou você não tem root instalado</string>
+    <string name="mesa_no_root_access_dialog_message">O acesso root não foi concedido a este aplicativo. Isso acontece quando o acesso é negado manualmente ou quando o root não está presente no dispositivo. Observe que o root é necessário para que este aplicativo funcione corretamente.</string>
+
+</resources>
