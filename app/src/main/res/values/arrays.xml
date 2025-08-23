@@ -6,6 +6,7 @@
         <item>@drawable/mesa_credits_oneui_icon</item>
         <item>@drawable/mesa_credits_fetch_icon</item>
         <item>@drawable/mesa_credits_waitingdots_icon</item>
+        <item>@drawable/mesa_credits_ats0c_icon</item>
     </array>
     <string-array name="mesa_creditspage_lib_title">
         <item>@string/mesa_credits_androidx_title</item>
@@ -13,6 +14,7 @@
         <item>@string/mesa_credits_oneui_title</item>
         <item>@string/mesa_credits_fetch_title</item>
         <item>@string/mesa_credits_waitingdots_title</item>
+        <item>@string/mesa_credits_ats0c_title</item>
     </string-array>
     <string-array name="mesa_creditspage_lib_desc">
         <item>@string/mesa_credits_androidx_description</item>
@@ -20,6 +22,7 @@
         <item>@string/mesa_credits_oneui_description</item>
         <item>@string/mesa_credits_fetch_description</item>
         <item>@string/mesa_credits_waitingdots_description</item>
+        <item>@string/mesa_credits_ats0c_description</item>
     </string-array>
     <string-array name="mesa_creditspage_lib_web">
         <item>https://developer.android.com/jetpack/androidx</item>
@@ -27,5 +30,6 @@
         <item>https://developer.samsung.com/one-ui</item>
         <item>https://github.com/tonyofrancis/Fetch</item>
         <item>https://github.com/tajchert/WaitingDots</item>
+        <item>https://github.com/At30c/SSM_ON</item>
     </string-array>
 </resources>

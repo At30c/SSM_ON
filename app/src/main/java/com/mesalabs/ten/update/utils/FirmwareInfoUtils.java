@@ -11,6 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.mesalabs.cerberus.utils.PropUtils;
+import com.mesalabs.ten.update.R;
 
 /*
  * 십 Update

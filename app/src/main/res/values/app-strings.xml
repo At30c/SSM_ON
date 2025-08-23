@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="mesa_tenupdate">십 Update | SSM</string>
+    <string name="mesa_tenupdate">십 Update | <b>ShitStockMod</b></string>
 
     <string name="mesa_tenupdate_notichannel_main_name">General</string>
     <string name="mesa_tenupdate_notichannel_bg_name">Background</string>
@@ -86,7 +86,7 @@
     <string name="mesa_whats_new">What\'s new</string>
     <string name="mesa_whats_new_supertext_separator" translatable="false">•</string>
     <string name="mesa_whats_new_supertext_rom_version">Version</string>
-    <string name="mesa_whats_new_supertext_rom_build">Build</string>
+    <string name="mesa_whats_new_supertext_rom_build" translatable="false">Build</string>
     <string name="mesa_whats_new_supertext_file_size">Size</string>
     <string name="mesa_whats_new_subtext">Find out the new additions in this update.</string>
     <string name="mesa_whats_new_error">There was an error during changelog parsing.</string>

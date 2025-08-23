@@ -11,9 +11,9 @@ android {
         applicationId "com.mesalabs.ten.update"
         namespace "com.mesalabs.ten.update"
         minSdk 31
-        targetSdk 33
+        targetSdk 36
         versionCode generateVersionCode()
-        versionName 'ShitStockMod'
+        versionName generateVersionName()
     }
     buildTypes {
         release {

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.mesalabs.ten.update.TenUpdateApp;
 
+import kotlin.text.UStringsKt;
+
 /*
  * Cerberus Core App
  *
@@ -46,6 +48,16 @@ public class PropUtils {
         }
     }
 
+    public static String getString(String key, String def) {
+        try {
+            return (String) SP.getMethod("getString", String.class, String.class)
+                    .invoke(null, key, def);
+        } catch (Exception e) {
+            return def;
+        }
+    }
+
+
     private static Class<?> getSystemProperties() {
         try {
             return Class.forName("android.os.SystemProperties");
@@ -54,5 +66,4 @@ public class PropUtils {
             return null;
         }
     }
-
 }

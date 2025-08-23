@@ -14,7 +14,6 @@
     <string name="mesa_no_network_connection">No network connection</string>
 
     <string name="mesa_credits">Credits</string>
-    <string name="mesa_credits_desc">The following page contains all the libraries/code snippets used in this app.</string>
     <string name="mesa_credits_androidx_title">Android Jetpack Library</string>
     <string name="mesa_credits_androidx_description">"@Google - Licensed with Apache 2.0"</string>
     <string name="mesa_credits_gmaterial_title">Material Components Library</string>
@@ -25,6 +24,8 @@
     <string name="mesa_credits_fetch_description">"@tonyofrancis - Licensed with Apache 2.0"</string>
     <string name="mesa_credits_waitingdots_title">WaitingDots</string>
     <string name="mesa_credits_waitingdots_description">"@tajchert - Licensed with MIT"</string>
+    <string name="mesa_credits_ats0c_title">"Ats0c"</string>
+    <string name="mesa_credits_ats0c_description">"@Ats0c - To be translated into PT-BR and some updates"</string>
 
 
 

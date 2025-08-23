@@ -5,7 +5,7 @@
     <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" tools:ignore="ProtectedPermissions" />
     <uses-permission android:name="android.permission.DEVICE_POWER" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"  />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.RECOVERY" tools:ignore="ProtectedPermissions"/>
