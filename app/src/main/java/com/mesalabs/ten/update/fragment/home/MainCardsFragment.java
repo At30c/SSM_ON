@@ -159,7 +159,7 @@ public class MainCardsFragment extends Fragment {
 
         if (mIsDownloaded) {
             updateStatusView.start(ROMUpdate.STATE_DOWNLOADED);
-            changelogView.start();
+            changelogView.stop();
             preInstallWarningText.setVisibility(View.VISIBLE);
             unc.setEnabled(true);
             unc.setIconDrawable(getResources().getDrawable(R.drawable.mesa_ota_card_ic_install, getContext().getTheme()));
@@ -193,7 +193,7 @@ public class MainCardsFragment extends Fragment {
         updateStatusView.setUpdateStatus(status);
 
         if (PreferencesUtils.Download.getUpdateAvailability()) {
-            changelogView.start();
+            changelogView.stop();
             unc.setEnabled(true);
             unc.setDescText(getString(R.string.mesa_ota_card_dwinst_summary));
             unc.setOnClickListener(new OnSingleClickListener() {
