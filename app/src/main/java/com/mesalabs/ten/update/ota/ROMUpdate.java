@@ -23,7 +23,7 @@ import com.mesalabs.ten.update.TenUpdateApp;
 import com.mesalabs.ten.update.R;
 import com.mesalabs.ten.update.activity.home.MainActivity;
 import com.mesalabs.ten.update.ota.noti.FetchOTANotificationManager;
-import com.mesalabs.ten.update.ota.tasks.IncrementalManifestParser;
+import com.mesalabs.ten.update.ota.tasks.UpdateManifestParser;
 import com.mesalabs.ten.update.ota.utils.Constants;
 import com.mesalabs.ten.update.ota.utils.GeneralUtils;
 import com.mesalabs.ten.update.ota.utils.PreferencesUtils;
@@ -137,7 +137,7 @@ public class ROMUpdate {
                 connection.connect();
 
                 try (InputStream input = connection.getInputStream()) {
-                    IncrementalManifestParser.Result result = new IncrementalManifestParser().parse(input);
+                    UpdateManifestParser.Result result = new UpdateManifestParser().parse(input);
                     mUpdateAvailable = result.updateAvailable;
                 }
             } catch (Exception e) {

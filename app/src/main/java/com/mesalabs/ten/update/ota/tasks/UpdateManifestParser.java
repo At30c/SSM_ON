@@ -15,9 +15,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-/** Parses the public incremental-update manifest. */
-public final class IncrementalManifestParser {
+/** Parses public full-ROM releases and optional future incremental releases. */
+public final class UpdateManifestParser {
+    private static final Pattern VERSION_PATTERN = Pattern.compile("^(\\d+)\\.(\\d+)\\.(\\d+)(?:[-+].*)?$");
+
     public static final class Result {
         public final boolean updateAvailable;
 
@@ -32,8 +36,6 @@ public final class IncrementalManifestParser {
             throw new JSONException("Unsupported manifest schema");
         }
 
-        String device = Build.DEVICE;
-        String currentVersion = PropUtils.get(Constants.PROP_ROM_VERSION, "");
         JSONArray updates = manifest.optJSONArray("updates");
         if (updates == null) {
             throw new JSONException("Manifest does not contain updates");
@@ -44,8 +46,7 @@ public final class IncrementalManifestParser {
 
         for (int index = 0; index < updates.length(); index++) {
             JSONObject update = updates.getJSONObject(index);
-            if (!device.equals(update.optString("device"))
-                    || !currentVersion.equals(update.optString("from_version"))) {
+            if (!isCompatible(update)) {
                 continue;
             }
 
@@ -53,7 +54,7 @@ public final class IncrementalManifestParser {
             long size = update.optLong("size", -1);
             String url = update.optString("url");
             if (!sha256.matches("[0-9a-f]{64}") || size <= 0 || url.isEmpty()) {
-                throw new JSONException("Invalid incremental update entry");
+                throw new JSONException("Invalid update entry");
             }
 
             PreferencesUtils.ROM.setRomName(update.optString("rom_name", "ExtremeROM"));
@@ -70,6 +71,49 @@ public final class IncrementalManifestParser {
         }
 
         return new Result(false);
+    }
+
+    private static boolean isCompatible(JSONObject update) throws JSONException {
+        if (!Build.DEVICE.equals(update.optString("device")) || !hasCurrentModel(update.optJSONArray("models"))) {
+            return false;
+        }
+
+        String packageType = update.optString("package_type", "full");
+        if ("full".equals(packageType)) {
+            return isNewerVersion(update.getString("version"), PropUtils.get(Constants.PROP_ROM_VERSION, ""));
+        }
+        if ("incremental".equals(packageType)) {
+            return PropUtils.get(Constants.PROP_ROM_VERSION, "").equals(update.optString("from_version"));
+        }
+        throw new JSONException("Unsupported package type");
+    }
+
+    private static boolean hasCurrentModel(JSONArray models) {
+        if (models == null) {
+            return false;
+        }
+        for (int index = 0; index < models.length(); index++) {
+            if (Build.MODEL.equals(models.optString(index))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static boolean isNewerVersion(String candidate, String current) {
+        Matcher candidateMatcher = VERSION_PATTERN.matcher(candidate);
+        Matcher currentMatcher = VERSION_PATTERN.matcher(current);
+        if (!candidateMatcher.matches() || !currentMatcher.matches()) {
+            return false;
+        }
+        for (int index = 1; index <= 3; index++) {
+            int candidatePart = Integer.parseInt(candidateMatcher.group(index));
+            int currentPart = Integer.parseInt(currentMatcher.group(index));
+            if (candidatePart != currentPart) {
+                return candidatePart > currentPart;
+            }
+        }
+        return false;
     }
 
     private static String readAll(InputStream input) throws IOException {

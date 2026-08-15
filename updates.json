@@ -3,9 +3,10 @@
   "updates": [
     {
       "device": "y2s",
-      "from_version": "2.6.3-f83c30dc",
+      "package_type": "full",
+      "models": ["SM-G985F"],
       "rom_name": "ExtremeROM",
-      "version": "TEST-2.6.4",
+      "version": "2.6.4-test",
       "build_date": 20260815,
       "url": "https://example.invalid/ExtremeROM-y2s-test.zip",
       "size": 1048576,
