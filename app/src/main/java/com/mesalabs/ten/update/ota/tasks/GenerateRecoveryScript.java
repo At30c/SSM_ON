@@ -57,10 +57,6 @@ public class GenerateRecoveryScript extends AsyncTask<Void, String, Boolean> {
                 + PreferencesUtils.ROM.getFullFilePathName(mContext)
                 + NEW_LINE);
 
-        mScript.append("cmd rm -rf "
-                + PreferencesUtils.ROM.getFullFilePathName(mContext)
-                + NEW_LINE);
-
         mScriptOutput = mScript.toString();
     }
 
@@ -74,10 +70,10 @@ public class GenerateRecoveryScript extends AsyncTask<Void, String, Boolean> {
         if(!check.equals("0")) {
             // Run as root
             SystemUtils.shell("mkdir -p /cache/recovery/; echo $?", true);
-            SystemUtils.shell("echo \"" + mScriptOutput + "\" > " + SCRIPT_FILE + "\n", true);
+            SystemUtils.shell(getWriteScriptCommand(), true);
         } else {
             // Permission was enabled, run without root
-            SystemUtils.shell("echo \"" + mScriptOutput + "\" > " + SCRIPT_FILE + "\n", false);
+            SystemUtils.shell(getWriteScriptCommand(), false);
         }
 
         return true;
@@ -87,5 +83,10 @@ public class GenerateRecoveryScript extends AsyncTask<Void, String, Boolean> {
     protected void onPostExecute(Boolean value) {
         PreferencesUtils.setRebootForInstall(true);
         SystemUtils.rebootToRecovery(mContext);
+    }
+
+    private String getWriteScriptCommand() {
+        String escapedScript = mScriptOutput.replace("'", "'\\\"'\\\"'");
+        return "printf '%s' '" + escapedScript + "' > " + SCRIPT_FILE;
     }
 }
