@@ -10,12 +10,8 @@
     <com.mesalabs.ten.update.ui.widget.UpdateStatusView
         android:id="@+id/mesa_usv_maincards_ota_mainactivity"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content" />
-
-    <View
-        android:layout_width="fill_parent"
-        android:layout_height="16.0dip"
-        android:background="?round_and_bgColor"/>
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
 
     <com.mesalabs.ten.update.ui.widget.ChangelogView
         android:id="@+id/mesa_cv_maincards_ota_mainactivity"
@@ -48,7 +44,7 @@
             android:id="@+id/mesa_card_all_ota_mainactivity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_update" app:TitleText="@string/mesa_ota_card_dwinst_title" app:isDividerViewVisible="true" />
 
         <com.mesalabs.ten.update.ui.widget.CardView
-            android:id="@+id/mesa_card_fwinfo_ota_mainactivity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_fw_info" app:TitleText="@string/mesa_firmware_info" app:DescText="@string/mesa_ota_card_fw_info_summary" app:isDividerViewVisible="false" />
+            android:id="@+id/mesa_card_fwinfo_ota_mainactivity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_fw_info" app:TitleText="@string/mesa_device_info" app:DescText="@string/mesa_ota_card_device_info_summary" app:isDividerViewVisible="false" />
 
     </com.mesalabs.cerberus.ui.widget.RoundLinearLayout>
 

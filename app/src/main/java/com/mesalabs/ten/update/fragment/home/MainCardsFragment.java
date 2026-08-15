@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.animation.PropertyValuesHolder;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -198,7 +199,7 @@ public class MainCardsFragment extends Fragment {
             unc.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(View view) {
-                    ((MainActivity) mActivity).onPreROMUpdateDownload();
+                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PreferencesUtils.ROM.getDownloadUrl())));
                 }
             });
         }

@@ -4,15 +4,11 @@
 
         <com.mesalabs.cerberus.ui.widget.RoundLinearLayout android:background="@drawable/mesa_content_area_bg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:orientation="vertical">
             <com.mesalabs.ten.update.ui.widget.CardView
-                android:id="@+id/mesa_card_oneui_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_fwinfo_oneui_version_title" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="false" />
-            <com.mesalabs.ten.update.ui.widget.CardView
-                android:id="@+id/mesa_card_android_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_fwinfo_android_version_title" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="true" />
+                android:id="@+id/mesa_card_oneui_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_device_profile" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="false" />
             <com.mesalabs.ten.update.ui.widget.CardView
                 android:id="@+id/mesa_card_kernel_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_fwinfo_kernel_version_title" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="true" />
             <com.mesalabs.ten.update.ui.widget.CardView
-                android:id="@+id/mesa_card_build_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_fwinfo_build_number_title" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="true" />
-            <com.mesalabs.ten.update.ui.widget.CardView
-                android:id="@+id/mesa_card_patch_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_fwinfo_sp_title" app:DescText="@string/mesa_fwinfo_default_summary" app:isDividerViewVisible="true" />
+                android:id="@+id/mesa_card_build_ota_firmwareinfo" android:layout_width="fill_parent" android:layout_height="wrap_content" app:TitleText="@string/mesa_extremerom_version" app:DescText="@string/mesa_fwinfo_default_summary"  app:isDividerViewVisible="true" />
         </com.mesalabs.cerberus.ui.widget.RoundLinearLayout>
 
         <View android:layout_width="fill_parent" android:layout_height="16.0dip" android:background="?round_and_bgColor"/>

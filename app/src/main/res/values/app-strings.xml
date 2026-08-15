@@ -57,11 +57,15 @@
 
 
 
-    <string name="mesa_ota_card_dwinst_title">Download and install</string>
-    <string name="mesa_ota_card_dwinst_summary">Tap here to start the update download</string>
+    <string name="mesa_ota_card_dwinst_title">Download in browser</string>
+    <string name="mesa_ota_card_dwinst_summary">Open the release link in your default browser</string>
     <string name="mesa_ota_card_inst_title">Install now</string>
     <string name="mesa_ota_card_inst_summary">Tap here to start the update installation</string>
     <string name="mesa_firmware_info">Firmware info</string>
+    <string name="mesa_device_info">Device info</string>
+    <string name="mesa_ota_card_device_info_summary">View your device profile and installed ExtremeROM build</string>
+    <string name="mesa_device_profile">Device profile</string>
+    <string name="mesa_extremerom_version">ExtremeROM version</string>
     <string name="mesa_ota_card_fw_info_summary">View the currently installed version of all the ROM software components</string>
 
     <string name="mesa_pre_install_warning">Device will be rebooted once the install procedure starts. Please make sure to save all of your work in background before installing the update.</string>

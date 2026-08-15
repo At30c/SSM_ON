@@ -1,12 +1,11 @@
 package com.mesalabs.ten.update.activity.home;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.text.BidiFormatter;
 import android.view.View;
 
 import com.mesalabs.cerberus.base.BaseAppBarActivity;
 import com.mesalabs.cerberus.ui.callback.OnSingleClickListener;
+import com.mesalabs.cerberus.utils.PropUtils;
 import com.mesalabs.ten.update.R;
 import com.mesalabs.ten.update.ui.widget.CardView;
 import com.mesalabs.ten.update.utils.FirmwareInfoUtils;
@@ -30,7 +29,7 @@ public class FirmwareInfoActivity extends BaseAppBarActivity {
 
         setContentView(R.layout.mesa_ota_activity_firmwareinfo_layout);
 
-        appBar.setTitleText(getString(R.string.mesa_firmware_info));
+        appBar.setTitleText(getString(R.string.mesa_device_info));
         appBar.setHomeAsUpButton(new OnSingleClickListener() {
             @Override
             public void onSingleClick(View v) {
@@ -47,21 +46,12 @@ public class FirmwareInfoActivity extends BaseAppBarActivity {
     }
 
     private void init()  {
-        // OneUI Version
         CardView oneui = findViewById(R.id.mesa_card_oneui_ota_firmwareinfo);
-        setFwInfoCardSummary(oneui, FirmwareInfoUtils.getOneUIVersion());
-        // Android Version
-        CardView android = findViewById(R.id.mesa_card_android_ota_firmwareinfo);
-        setFwInfoCardSummary(android, Build.VERSION.RELEASE);
-        // Android Version
+        setFwInfoCardSummary(oneui, PropUtils.get("ro.extremerom.device", "y2s"));
         CardView kernel = findViewById(R.id.mesa_card_kernel_ota_firmwareinfo);
         setFwInfoCardSummary(kernel, FirmwareInfoUtils.getKernelVersion());
-        // Build Number
         CardView bn = findViewById(R.id.mesa_card_build_ota_firmwareinfo);
-        setFwInfoCardSummary(bn, BidiFormatter.getInstance().unicodeWrap(Build.DISPLAY));
-        // Security Patch
-        CardView sp = findViewById(R.id.mesa_card_patch_ota_firmwareinfo);
-        setFwInfoCardSummary(sp, FirmwareInfoUtils.getSecurityPatchVersion());
+        setFwInfoCardSummary(bn, PropUtils.get("ro.extremerom.version", "Unknown"));
     }
 
     private void setFwInfoCardSummary(CardView card, String summary) {
