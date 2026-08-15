@@ -109,6 +109,7 @@ public class PreferencesUtils {
         private static final String DOWNLOAD_RUNNING = "download_running";
         private static String DOWNLOAD_ID = "download_id";
         private static String IS_DOWNLOAD_FINISHED = "is_download_finished";
+        private static String BROWSER_DOWNLOAD_REQUESTED = "browser_download_requested";
 
         private static SharedPreferencesUtils sp = SharedPreferencesUtils.getInstance(PREF_NAME);
 
@@ -118,6 +119,7 @@ public class PreferencesUtils {
             sp.put(DOWNLOAD_RUNNING, false);
             sp.put(DOWNLOAD_ID, 0);
             sp.put(IS_DOWNLOAD_FINISHED, false);
+            sp.put(BROWSER_DOWNLOAD_REQUESTED, false);
         }
 
 
@@ -127,6 +129,14 @@ public class PreferencesUtils {
 
         public static void setDownloadFinished(boolean value) {
             sp.put(IS_DOWNLOAD_FINISHED, value);
+        }
+
+        public static boolean getBrowserDownloadRequested() {
+            return sp.getBoolean(BROWSER_DOWNLOAD_REQUESTED, false);
+        }
+
+        public static void setBrowserDownloadRequested(boolean value) {
+            sp.put(BROWSER_DOWNLOAD_REQUESTED, value);
         }
 
         public static int getDownloadID() {

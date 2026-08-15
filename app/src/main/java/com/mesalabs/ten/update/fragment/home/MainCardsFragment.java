@@ -197,20 +197,24 @@ public class MainCardsFragment extends Fragment {
         updateStatusView.setUpdateStatus(status);
 
         if (PreferencesUtils.Download.getUpdateAvailability()) {
-            changelogView.stop();
-            unc.setEnabled(true);
-            unc.setDescText(getString(R.string.mesa_ota_card_dwinst_summary));
-            unc.setOnClickListener(new OnSingleClickListener() {
-                @Override
-                public void onSingleClick(View view) {
-                    openReleaseInBrowser();
-                }
-            });
+            if (PreferencesUtils.Download.getBrowserDownloadRequested()) {
+                showInstallAction();
+            } else {
+                changelogView.stop();
+                unc.setEnabled(true);
+                unc.setDescText(getString(R.string.mesa_ota_card_dwinst_summary));
+                unc.setOnClickListener(view -> openReleaseInBrowser());
+            }
         }
     }
 
     private void openReleaseInBrowser() {
+        PreferencesUtils.Download.setBrowserDownloadRequested(true);
         startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PreferencesUtils.ROM.getDownloadUrl())));
+        showInstallAction();
+    }
+
+    private void showInstallAction() {
         unc.setIconDrawable(getResources().getDrawable(R.drawable.mesa_ota_card_ic_install, getContext().getTheme()));
         unc.setTitleText(getString(R.string.mesa_ota_card_inst_title));
         unc.setDescText(getString(R.string.mesa_ota_card_inst_summary));
