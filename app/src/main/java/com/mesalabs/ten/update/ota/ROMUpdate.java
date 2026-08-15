@@ -6,14 +6,11 @@ import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.math.BigInteger;
 import java.net.URL;
 import java.net.URLConnection;
 import java.security.MessageDigest;
@@ -26,7 +23,7 @@ import com.mesalabs.ten.update.TenUpdateApp;
 import com.mesalabs.ten.update.R;
 import com.mesalabs.ten.update.activity.home.MainActivity;
 import com.mesalabs.ten.update.ota.noti.FetchOTANotificationManager;
-import com.mesalabs.ten.update.ota.tasks.ROMXMLParser;
+import com.mesalabs.ten.update.ota.tasks.IncrementalManifestParser;
 import com.mesalabs.ten.update.ota.utils.Constants;
 import com.mesalabs.ten.update.ota.utils.GeneralUtils;
 import com.mesalabs.ten.update.ota.utils.PreferencesUtils;
@@ -70,6 +67,7 @@ public class ROMUpdate {
     private ROMUpdate.StubListener mStubListener;
     private boolean mIsRunningInApp = true;
     private boolean mNewUpdateAvailable = false;
+    private boolean mManifestLoaded = false;
 
     public ROMUpdate(Context context, ROMUpdate.StubListener stubListener) {
         mContext = context;
@@ -87,8 +85,7 @@ public class ROMUpdate {
     private void postCheckUpdates() {
         int newStatus = STATE_ERROR;
 
-        if (!PreferencesUtils.ROM.getRomName().equals("null")) {
-            mNewUpdateAvailable = PreferencesUtils.Download.getUpdateAvailability();
+        if (mManifestLoaded) {
             newStatus = mNewUpdateAvailable ? STATE_NEW_VERSION_AVAILABLE : STATE_NO_UPDATES;
 
             GeneralUtils.dismissNotifications(mContext);
@@ -111,11 +108,11 @@ public class ROMUpdate {
     }
 
 
-    class LoadUpdateManifest extends AsyncTask<Void, Void, Void> {
+    class LoadUpdateManifest extends AsyncTask<Void, Void, Boolean> {
         private final String TAG = "LoadUpdateManifest";
-        private static final String MANIFEST = "update_manifest.xml";
 
         private Context mContext;
+        private boolean mUpdateAvailable;
 
 
         public LoadUpdateManifest(Context context) {
@@ -128,44 +125,32 @@ public class ROMUpdate {
                 GeneralUtils.dismissNotifications(mContext);
             }
 
-            File manifest = new File(mContext.getFilesDir().getPath(), MANIFEST);
-            if (manifest.exists()) {
-                manifest.delete();
-            }
         }
 
         @Override
-        protected Void doInBackground(Void... v) {
+        protected Boolean doInBackground(Void... v) {
             try {
-                InputStream input = null;
-
                 URL url = new URL(Constants.OTA_MANIFEST_URL);
                 URLConnection connection = url.openConnection();
+                connection.setConnectTimeout(15000);
+                connection.setReadTimeout(15000);
                 connection.connect();
 
-                input = new BufferedInputStream(url.openStream());
-                OutputStream output = mContext.openFileOutput(MANIFEST, Context.MODE_PRIVATE);
-
-                byte[] data = new byte[1024];
-                int count;
-                while ((count = input.read(data)) != -1) {
-                    output.write(data, 0, count);
+                try (InputStream input = connection.getInputStream()) {
+                    IncrementalManifestParser.Result result = new IncrementalManifestParser().parse(input);
+                    mUpdateAvailable = result.updateAvailable;
                 }
-
-                output.flush();
-                output.close();
-                input.close();
-
-                ROMXMLParser parser = new ROMXMLParser();
-                parser.parse(new File(mContext.getFilesDir(), MANIFEST));
             } catch (Exception e) {
                 LogUtils.d(TAG, "Exception: " + e.getMessage());
+                return false;
             }
-            return null;
+            return true;
         }
 
         @Override
-        protected void onPostExecute(Void result) {
+        protected void onPostExecute(Boolean result) {
+            mManifestLoaded = result;
+            mNewUpdateAvailable = result && mUpdateAvailable;
             Intent intent;
             if (!mIsRunningInApp) {
                 intent = new Intent(Constants.INTENT_MANIFEST_CHECK_BACKGROUND);
@@ -286,7 +271,7 @@ public class ROMUpdate {
 
                     @Override
                     public void onCompleted(@NotNull com.tonyodev.fetch2.Download download) {
-                        new MD5Check(mActivity).execute();
+                        new SHA256Check(mActivity).execute();
                     }
 
                     @Override
@@ -328,13 +313,13 @@ public class ROMUpdate {
         }
     }
 
-    static class MD5Check extends AsyncTask<Object, Boolean, Boolean>{
-        private final String TAG = "MD5Check";
+    static class SHA256Check extends AsyncTask<Object, Boolean, Boolean>{
+        private final String TAG = "SHA256Check";
         private MainActivity mActivity;
         private DownloadProgressView mDPV;
         private File mUpdatePkg;
 
-        private MD5Check(MainActivity activity) {
+        private SHA256Check(MainActivity activity) {
             mActivity = activity;
         }
 
@@ -348,8 +333,8 @@ public class ROMUpdate {
         @Override
         protected Boolean doInBackground(Object... params) {
             mUpdatePkg = new File(PreferencesUtils.ROM.getFullFilePathName(mActivity.getApplicationContext()));
-            String md5Remote = PreferencesUtils.ROM.getMd5().trim();
-            return checkMD5(md5Remote, mUpdatePkg);
+            String sha256Remote = PreferencesUtils.ROM.getSha256().trim();
+            return checkSHA256(sha256Remote, mUpdatePkg);
         }
 
         @Override
@@ -379,27 +364,27 @@ public class ROMUpdate {
             super.onPostExecute(result);
         }
 
-        private boolean checkMD5(String md5, File file) {
-            if (TextUtils.isEmpty(md5) || file == null) {
-                LogUtils.e(TAG, "MD5 string empty or updateFile null");
+        private boolean checkSHA256(String sha256, File file) {
+            if (TextUtils.isEmpty(sha256) || file == null) {
+                LogUtils.e(TAG, "SHA-256 string empty or updateFile null");
                 return false;
             }
 
-            String calculatedDigest = calculateMD5(file);
+            String calculatedDigest = calculateSHA256(file);
             if (calculatedDigest == null) {
                 LogUtils.e(TAG, "calculatedDigest null");
                 return false;
             }
 
-            LogUtils.v(TAG, "Calculated digest: " + calculatedDigest + ", Manifest digest: " + md5);
+            LogUtils.v(TAG, "Calculated digest: " + calculatedDigest + ", Manifest digest: " + sha256);
 
-            return calculatedDigest.equalsIgnoreCase(md5);
+            return calculatedDigest.equalsIgnoreCase(sha256);
         }
 
-        String calculateMD5(File updateFile) {
+        String calculateSHA256(File updateFile) {
             MessageDigest digest;
             try {
-                digest = MessageDigest.getInstance("MD5");
+                digest = MessageDigest.getInstance("SHA-256");
             } catch (NoSuchAlgorithmException e) {
                 LogUtils.e(TAG, e.toString());
                 return null;
@@ -419,12 +404,12 @@ public class ROMUpdate {
                 while ((read = is.read(buffer)) > 0) {
                     digest.update(buffer, 0, read);
                 }
-                byte[] md5sum = digest.digest();
-                BigInteger bigInt = new BigInteger(1, md5sum);
-                String output = bigInt.toString(16);
-                // Fill to 32 chars
-                output = String.format("%32s", output).replace(' ', '0');
-                return output;
+                byte[] hash = digest.digest();
+                StringBuilder output = new StringBuilder(hash.length * 2);
+                for (byte value : hash) {
+                    output.append(String.format("%02x", value));
+                }
+                return output.toString();
             } catch (IOException e) {
                 throw new CerberusException(e.toString());
             } finally {

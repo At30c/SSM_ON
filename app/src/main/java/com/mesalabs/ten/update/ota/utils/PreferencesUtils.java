@@ -163,7 +163,7 @@ public class PreferencesUtils {
         private static String VERSION_NAME = "rom_version_name";
         private static String BUILD_NUMBER = "rom_build_number";
         private static String DOWNLOAD_URL = "rom_download_url";
-        private static String MD5 = "rom_md5";
+        private static String SHA256 = "rom_sha256";
         private static String CHANGELOG_HEADER = "rom_changelog_header_img";
         private static String CHANGELOG = "rom_changelog";
         private static String ANDROID = "rom_android_ver";
@@ -179,7 +179,7 @@ public class PreferencesUtils {
             sp.put(VERSION_NAME, DEF_VALUE);
             sp.put(BUILD_NUMBER, 0);
             sp.put(DOWNLOAD_URL, DEF_VALUE);
-            sp.put(MD5, DEF_VALUE);
+            sp.put(SHA256, DEF_VALUE);
             sp.put(CHANGELOG, DEF_VALUE);
             sp.put(CHANGELOG_HEADER, DEF_VALUE);
             sp.put(ANDROID, DEF_VALUE);
@@ -205,8 +205,8 @@ public class PreferencesUtils {
             return sp.getString(DOWNLOAD_URL, DEF_VALUE);
         }
 
-        public static String getMd5() {
-            return sp.getString(MD5, DEF_VALUE);
+        public static String getSha256() {
+            return sp.getString(SHA256, DEF_VALUE);
         }
 
         public static String getChangelogHeaderImgUrl() {
@@ -249,8 +249,8 @@ public class PreferencesUtils {
             sp.put(DOWNLOAD_URL, value);
         }
 
-        public static void setMd5(String value) {
-            sp.put(MD5, value);
+        public static void setSha256(String value) {
+            sp.put(SHA256, value);
         }
 
         public static void setChangelogHeaderImgUrl(String value) {

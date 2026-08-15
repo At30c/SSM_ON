@@ -2,24 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.ACCESS_CACHE_FILESYSTEM" tools:ignore="ProtectedPermissions" />
-    <uses-permission android:name="android.permission.DEVICE_POWER" tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.RECOVERY" tools:ignore="ProtectedPermissions"/>
-    <uses-permission android:name="android.permission.REBOOT" tools:ignore="ProtectedPermissions"/>
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
-    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
 
-    <application android:name=".TenUpdateApp" android:allowBackup="false" android:hardwareAccelerated="true" android:persistent="true" android:icon="@mipmap/ic_launcher" android:label="@string/mesa_tenupdate" android:supportsRtl="true" android:theme="@style/mesa_OTA_AppStyle.DayNight" android:networkSecurityConfig="@xml/network_security_config" tools:replace="android:label">
+    <application android:name=".TenUpdateApp" android:allowBackup="false" android:hardwareAccelerated="true" android:icon="@mipmap/ic_launcher" android:label="@string/mesa_tenupdate" android:supportsRtl="true" android:theme="@style/mesa_OTA_AppStyle.DayNight" android:networkSecurityConfig="@xml/network_security_config" tools:replace="android:label">
 
         <meta-data android:name="SamsungBasicInteraction" android:value="SEP10"/>
         <meta-data android:name="com.samsung.android.icon_container.has_icon_container" android:value="true"/>
@@ -36,6 +27,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- Changelog Activity -->

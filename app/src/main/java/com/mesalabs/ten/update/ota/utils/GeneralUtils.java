@@ -12,7 +12,6 @@ import java.io.File;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.TaskStackBuilder;
 
-import com.mesalabs.cerberus.utils.PropUtils;
 import com.mesalabs.ten.update.R;
 import com.mesalabs.ten.update.activity.home.MainActivity;
 import com.mesalabs.ten.update.ota.receivers.AppReceiver;
@@ -68,16 +67,6 @@ public class GeneralUtils {
                 alarmManager.cancel(PendingIntent.getBroadcast(context, intentId, intent, intentFlag));
             }
         }
-    }
-
-    public static void setUpdateAvailability() {
-        int currentVer = PropUtils.getInt(Constants.PROP_ROM_BUILD, 0);
-        int manifestVer = PreferencesUtils.ROM.getBuildNumber();
-
-        boolean available = currentVer < manifestVer;
-
-        PreferencesUtils.Download.setUpdateAvailability(available);
-        LogUtils.d(TAG, "Update Availability is " + available);
     }
 
     public static void setupDownloadCompletedNotification(Context context, boolean md5pass) {
