@@ -40,8 +40,24 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.mesalabs.ten.update.ui.widget.CardView
-            android:id="@+id/mesa_card_all_ota_mainactivity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_update" app:TitleText="@string/mesa_ota_card_dwinst_title" app:isDividerViewVisible="true" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.mesalabs.ten.update.ui.widget.CardView
+                android:id="@+id/mesa_card_all_ota_mainactivity" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_update" app:TitleText="@string/mesa_ota_card_dwinst_title" app:isDividerViewVisible="true" />
+
+            <ImageButton
+                android:id="@+id/mesa_redownload_ota_mainactivity"
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:contentDescription="@string/mesa_ota_card_dwinst_title"
+                android:padding="16dp"
+                android:src="@drawable/mesa_ota_card_ic_update"
+                android:visibility="gone" />
+        </LinearLayout>
 
         <com.mesalabs.ten.update.ui.widget.CardView
             android:id="@+id/mesa_card_fwinfo_ota_mainactivity" android:layout_width="fill_parent" android:layout_height="wrap_content" app:IconDrawable="@drawable/mesa_ota_card_ic_fw_info" app:TitleText="@string/mesa_device_info" app:DescText="@string/mesa_ota_card_device_info_summary" app:isDividerViewVisible="false" />

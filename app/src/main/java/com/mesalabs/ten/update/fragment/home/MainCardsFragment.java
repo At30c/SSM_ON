@@ -12,7 +12,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
@@ -60,6 +62,7 @@ public class MainCardsFragment extends Fragment {
 
     private CardView unc;
     private CardView fic;
+    private ImageButton redownloadButton;
 
     @Override
     public void onAttach(@NotNull Context context) {
@@ -137,6 +140,7 @@ public class MainCardsFragment extends Fragment {
         preInstallWarningText = mRootView.findViewById(R.id.mesa_preinstall_warning_ota_mainactivity);
 
         unc = mRootView.findViewById(R.id.mesa_card_all_ota_mainactivity);
+        redownloadButton = mRootView.findViewById(R.id.mesa_redownload_ota_mainactivity);
         unc.setEnabled(false);
 
         fic = mRootView.findViewById(R.id.mesa_card_fwinfo_ota_mainactivity);
@@ -199,10 +203,20 @@ public class MainCardsFragment extends Fragment {
             unc.setOnClickListener(new OnSingleClickListener() {
                 @Override
                 public void onSingleClick(View view) {
-                    startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PreferencesUtils.ROM.getDownloadUrl())));
+                    openReleaseInBrowser();
                 }
             });
         }
+    }
+
+    private void openReleaseInBrowser() {
+        startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PreferencesUtils.ROM.getDownloadUrl())));
+        unc.setIconDrawable(getResources().getDrawable(R.drawable.mesa_ota_card_ic_install, getContext().getTheme()));
+        unc.setTitleText(getString(R.string.mesa_ota_card_inst_title));
+        unc.setDescText(getString(R.string.mesa_ota_card_inst_summary));
+        unc.setOnClickListener(view -> Toast.makeText(mContext, "Select the downloaded ZIP before installing.", Toast.LENGTH_LONG).show());
+        redownloadButton.setVisibility(View.VISIBLE);
+        redownloadButton.setOnClickListener(view -> startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(PreferencesUtils.ROM.getDownloadUrl()))));
     }
 
 }
