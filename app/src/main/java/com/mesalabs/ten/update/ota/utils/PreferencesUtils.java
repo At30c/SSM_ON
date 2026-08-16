@@ -109,7 +109,6 @@ public class PreferencesUtils {
         private static final String DOWNLOAD_RUNNING = "download_running";
         private static String DOWNLOAD_ID = "download_id";
         private static String IS_DOWNLOAD_FINISHED = "is_download_finished";
-        private static String BROWSER_DOWNLOAD_REQUESTED = "browser_download_requested";
 
         private static SharedPreferencesUtils sp = SharedPreferencesUtils.getInstance(PREF_NAME);
 
@@ -119,7 +118,6 @@ public class PreferencesUtils {
             sp.put(DOWNLOAD_RUNNING, false);
             sp.put(DOWNLOAD_ID, 0);
             sp.put(IS_DOWNLOAD_FINISHED, false);
-            sp.put(BROWSER_DOWNLOAD_REQUESTED, false);
         }
 
 
@@ -129,14 +127,6 @@ public class PreferencesUtils {
 
         public static void setDownloadFinished(boolean value) {
             sp.put(IS_DOWNLOAD_FINISHED, value);
-        }
-
-        public static boolean getBrowserDownloadRequested() {
-            return sp.getBoolean(BROWSER_DOWNLOAD_REQUESTED, false);
-        }
-
-        public static void setBrowserDownloadRequested(boolean value) {
-            sp.put(BROWSER_DOWNLOAD_REQUESTED, value);
         }
 
         public static int getDownloadID() {
@@ -173,14 +163,13 @@ public class PreferencesUtils {
         private static String VERSION_NAME = "rom_version_name";
         private static String BUILD_NUMBER = "rom_build_number";
         private static String DOWNLOAD_URL = "rom_download_url";
-        private static String SHA256 = "rom_sha256";
+        private static String MD5 = "rom_md5";
         private static String CHANGELOG_HEADER = "rom_changelog_header_img";
         private static String CHANGELOG = "rom_changelog";
         private static String ANDROID = "rom_android_ver";
         private static String ONEUI = "rom_oneui_ver";
         private static String WEBSITE = "rom_website";
         private static String FILESIZE = "rom_filesize";
-        private static String SELECTED_FILE = "rom_selected_file";
 
         private static SharedPreferencesUtils sp = SharedPreferencesUtils.getInstance(PREF_NAME);
 
@@ -190,14 +179,13 @@ public class PreferencesUtils {
             sp.put(VERSION_NAME, DEF_VALUE);
             sp.put(BUILD_NUMBER, 0);
             sp.put(DOWNLOAD_URL, DEF_VALUE);
-            sp.put(SHA256, DEF_VALUE);
+            sp.put(MD5, DEF_VALUE);
             sp.put(CHANGELOG, DEF_VALUE);
             sp.put(CHANGELOG_HEADER, DEF_VALUE);
             sp.put(ANDROID, DEF_VALUE);
             sp.put(ONEUI, DEF_VALUE);
             sp.put(WEBSITE, DEF_VALUE);
             sp.put(FILESIZE, 0L);
-            sp.put(SELECTED_FILE, DEF_VALUE);
         }
 
 
@@ -217,8 +205,8 @@ public class PreferencesUtils {
             return sp.getString(DOWNLOAD_URL, DEF_VALUE);
         }
 
-        public static String getSha256() {
-            return sp.getString(SHA256, DEF_VALUE);
+        public static String getMd5() {
+            return sp.getString(MD5, DEF_VALUE);
         }
 
         public static String getChangelogHeaderImgUrl() {
@@ -261,8 +249,8 @@ public class PreferencesUtils {
             sp.put(DOWNLOAD_URL, value);
         }
 
-        public static void setSha256(String value) {
-            sp.put(SHA256, value);
+        public static void setMd5(String value) {
+            sp.put(MD5, value);
         }
 
         public static void setChangelogHeaderImgUrl(String value) {
@@ -289,18 +277,12 @@ public class PreferencesUtils {
             sp.put(FILESIZE, value);
         }
 
-        public static void setSelectedFile(String value) {
-            sp.put(SELECTED_FILE, value);
-        }
-
         public static String getFilename() {
             String result = getRomName() + "_OTA_" + getVersionName() + "_" + getBuildNumber();
             return result.replace(" ","-");
         }
 
         public static String getFullFilePathName(Context context) {
-            String selectedFile = sp.getString(SELECTED_FILE, DEF_VALUE);
-            if (!DEF_VALUE.equals(selectedFile)) return selectedFile;
             return context.getExternalFilesDir(null)
                     + File.separator
                     + getFilename()

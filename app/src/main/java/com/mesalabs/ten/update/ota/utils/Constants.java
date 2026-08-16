@@ -15,10 +15,11 @@ package com.mesalabs.ten.update.ota.utils;
 
 public class Constants {
     // Props
-    public static final String PROP_ROM_VERSION = "ro.extremerom.version";
+    public static final String PROP_ROM_BUILD = "ro.ssm.otaup.ver";
 
     // Manifest
-    public static final String OTA_MANIFEST_URL = "https://raw.githubusercontent.com/At30c/SSM_ON/master/updates.json";
+    //public static final String OTA_MANIFEST_URL = "https://gitlab.com/BlackMesa123/on-otamanifest/raw/master/" + PropUtils.get(PROP_ROM_BUILD, "0") + "/rom-manifest.xml";
+    public static final String OTA_MANIFEST_URL = "https://gitlab.com/At30c/SSM-UF/raw/main/manifest.xml";
 
     // Broadcast intents
     public static final String INTENT_MANIFEST_LOADED = "com.mesalabs.ten.ota.MANIFEST_LOADED";
