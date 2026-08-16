@@ -2,20 +2,20 @@
   "schema_version": 1,
   "updates": [
     {
-      "device": "y2s",
+      "device": "y2s4g",
       "legacy_device": "y2s",
       "package_type": "full",
       "models": ["SM-G985F"],
       "rom_name": "ExtremeROM",
-      "version": "2.6.99-test",
-      "build_timestamp": 1787000000,
+      "version": "2.6.3-9400834c",
+      "build_timestamp": 1786843860,
       "build_date": 20260815,
       "filename": "ExtremeROM_UNOFFICIAL_2.6.3-9400834c_20260815_y2s4g-sign.zip",
       "url": "https://youtube.com",
-      "size": 5750353813,
-      "sha256": "18506a8f60f886ca39a87c49b80d07d2d885fe93148badd7fa09b4fe8a2b9c74",
+      "size": 5750375972,
+      "sha256": "9ecd577e5d68101ef3a5ef6c6293f64f873283aafad5cf222d3c739ddeb3d918",
       "android_version": "15",
-      "oneui_version": "7.0",
+      "oneui_version": "160000",
       "changelog_url": ""
     }
   ]
