@@ -83,6 +83,10 @@ public final class UpdateManifestParser {
 
         String packageType = update.optString("package_type", "full");
         if ("full".equals(packageType)) {
+            long currentTimestamp = getLongProperty("ro.extremerom.build_timestamp");
+            long candidateTimestamp = update.optLong("build_timestamp", 0);
+            if (candidateTimestamp > currentTimestamp) return true;
+            if (candidateTimestamp != 0 && currentTimestamp != 0) return false;
             return isNewerVersion(update.getString("version"), PropUtils.get(Constants.PROP_ROM_VERSION, ""));
         }
         if ("incremental".equals(packageType)) {
@@ -117,6 +121,14 @@ public final class UpdateManifestParser {
             }
         }
         return !candidate.equals(current);
+    }
+
+    private static long getLongProperty(String property) {
+        try {
+            return Long.parseLong(PropUtils.get(property, "0"));
+        } catch (NumberFormatException ignored) {
+            return 0;
+        }
     }
 
     private static String readAll(InputStream input) throws IOException {
