@@ -113,7 +113,7 @@ public final class UpdateManifestParser {
                 return candidatePart > currentPart;
             }
         }
-        return false;
+        return !candidate.equals(current);
     }
 
     private static String readAll(InputStream input) throws IOException {
