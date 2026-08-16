@@ -2,7 +2,8 @@
   "schema_version": 1,
   "updates": [
     {
-      "device": "y2s",
+      "device": "y2s4g",
+      "legacy_device": "y2s",
       "package_type": "full",
       "models": ["SM-G985F"],
       "rom_name": "ExtremeROM",

@@ -74,7 +74,10 @@ public final class UpdateManifestParser {
     }
 
     private static boolean isCompatible(JSONObject update) throws JSONException {
-        if (!Build.DEVICE.equals(update.optString("device")) || !hasCurrentModel(update.optJSONArray("models"))) {
+        String deviceProfile = PropUtils.get("ro.extremerom.device", Build.DEVICE);
+        boolean matchingDevice = deviceProfile.equals(update.optString("device"))
+                || Build.DEVICE.equals(update.optString("legacy_device"));
+        if (!matchingDevice || !hasCurrentModel(update.optJSONArray("models"))) {
             return false;
         }
 

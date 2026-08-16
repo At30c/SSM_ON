@@ -180,6 +180,7 @@ public class PreferencesUtils {
         private static String ONEUI = "rom_oneui_ver";
         private static String WEBSITE = "rom_website";
         private static String FILESIZE = "rom_filesize";
+        private static String SELECTED_FILE = "rom_selected_file";
 
         private static SharedPreferencesUtils sp = SharedPreferencesUtils.getInstance(PREF_NAME);
 
@@ -196,6 +197,7 @@ public class PreferencesUtils {
             sp.put(ONEUI, DEF_VALUE);
             sp.put(WEBSITE, DEF_VALUE);
             sp.put(FILESIZE, 0L);
+            sp.put(SELECTED_FILE, DEF_VALUE);
         }
 
 
@@ -287,12 +289,18 @@ public class PreferencesUtils {
             sp.put(FILESIZE, value);
         }
 
+        public static void setSelectedFile(String value) {
+            sp.put(SELECTED_FILE, value);
+        }
+
         public static String getFilename() {
             String result = getRomName() + "_OTA_" + getVersionName() + "_" + getBuildNumber();
             return result.replace(" ","-");
         }
 
         public static String getFullFilePathName(Context context) {
+            String selectedFile = sp.getString(SELECTED_FILE, DEF_VALUE);
+            if (!DEF_VALUE.equals(selectedFile)) return selectedFile;
             return context.getExternalFilesDir(null)
                     + File.separator
                     + getFilename()
